@@ -3,19 +3,12 @@ noscript {
     color: orange;
     background-color: red;
 }
-button {
-    background-color: green;
-    color: lightseagreen;
-}
 h1 {
     color: black;
     background-color: blue;
 }
 p {
     background-color: aquamarine;
-}
-img {
-    size: 1in;
 }
 head {
     background-color: maroon;
