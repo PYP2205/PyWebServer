@@ -5,6 +5,10 @@ A simple Python Webserver that would locally host a website you're working on yo
 * Server IP (localhost or your own) and port number can be specified through commandline arguments.
 * Server IP (localhost or your own) and port number can be specified through a json configuration file. So you can have the server automatically startup when the program is executed.
 
+# Upcoming Features
+* Have the webserver bind the server ip address with the user's ip address.
+* Have the program automatically open the webpage when the user starts the webserver.
+
 # Requirements
 * Python 3.8 or later (Tested with Python 3.8, 3.9, and 3.10).
 * Windows 10 or later, Linux, or Mac OS.
