@@ -9,12 +9,22 @@ A simple library for handling HTTP requests,
 when the HTTP webserver starts.
 """
 
-# Used for creating a HTTP Serer and socket
+# Used for creating a HTTP Serer and socket for handeling user requests.
 import http.server
 import socketserver
 
+# Used for opening the webpage when the webserver starts.
+import webbrowser as browser
+
+class ProtcolNotSpecified(BaseException):
+    pass
+class StopHTTPWebserver(BaseException):
+    pass
+
+
+
 # Default Localhost IP '127.0.0.1', default port 8080.
-async def start_http_server(HOST="127.0.0.1", PORT=8080):
+async def start_http_server(HOST="127.0.0.1", PORT=8080, auto_open=False):
     """
     Creates an HTTP Webserver with the specified Localhost IP Address,
     and the port number.
@@ -22,19 +32,31 @@ async def start_http_server(HOST="127.0.0.1", PORT=8080):
     Defaults:
     HOST: 127.0.0.1
     PORT: 8080
+    PROTCOL: TCP
     """
 
     # Makes the http server damon variable global, so when the user presses CTRL + C it will make it possible to shutdown the server.
     global httpd
+    try:
+        
+        # Binds the localhost ip and port to a TCP server along with the HTTP request handler.
+        with socketserver.TCPServer((HOST,PORT), http.server.SimpleHTTPRequestHandler) as httpd:
+            # If the user sets 'auto_open' to true, then it will automatically open the webpage.
+            if auto_open:
+                print(f"\n'{HOST}' listening on: {PORT}\nOpening 'http://{HOST}:{PORT}/'\n")
+                browser.open(f"http://{HOST}:{PORT}/")
 
-    # Creates a simple HTTP request handleer, for handling requests.
-    request_handler = http.server.SimpleHTTPRequestHandler
+            # If the user sets 'auto_open' to false, then it will not open the webpage when the server starts up.
+            else:
+                print(f"\n'{HOST}' listening on: {PORT}\nOn your web browser enter 'http://{HOST}:{PORT}/'\n")
 
-    # Binds the localhost ip and port to a socket server along with the HTTP request handler.
-    with socketserver.TCPServer((HOST,PORT), request_handler) as httpd:
+            # Serves HTTPS requests until the user presses CTRL + C on the console.
+            await httpd.serve_forever()
 
-        # Shows the user that the server is up, and provides a link for the user to copy onto their web browser's URL bar.
-        print(f"\n'{HOST}' listening on: {PORT}\nOn your web browser enter 'http://{HOST}:{PORT}/'\n")
+            
+    except KeyboardInterrupt:
+        print(f"\n{HOST}:{PORT} stopped!\n")
+        httpd.shutdown()
 
-        # Serves HTTPS requests until the user presses CTRL + C on the console.
-        await httpd.serve_forever()
+    except Exception as error:
+        print(f"\n{HOST}:{PORT} stopped due to: {error}\n")
