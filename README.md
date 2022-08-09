@@ -1,18 +1,16 @@
-# ParaYev-WebServer
+# PyWebServer
 A simple Python Webserver that would locally host a website you're working on your computer, or even on your local network.
 
 # Features
 * Server IP (localhost or your own) and port number can be specified through commandline arguments.
 * Server IP (localhost or your own) and port number can be specified through a json configuration file. So you can have the server automatically startup when the program is executed.
-
-# Upcoming Features
-* Have the webserver bind the server ip address with the user's ip address.
-* Have the program automatically open the webpage when the user starts the webserver.
+* The webserver bind the server ip address with the user's ip address to have the webpage be hosted on the user's local network (may not work on Windows if you have multiple network adapters such as virtual adapters).
+* Automatically opens the webpage when the user starts the webserver.
 
 # Requirements
 * Python 3.8 or later (Tested with Python 3.8, 3.9, and 3.10).
 * Windows 10 or later, Linux, or Mac OS.
-* 'index.html' or any other files in the same directory as the webserver program or source files.
+* 'index.html' and any other files in the same directory as the webserver program or source files (the HTML document must be named as 'index.html').
 
 # Instructions
 When starting the webserver, you can specify which ip address and port to bind to the server through arguments. By the 'server_config.json' file [recommended], which there you specify which localhost ip and port you want to use. Or if you don't specify anything through arguments or the configuration file, then the program will prompt you for the ip address and port number. If nothing is specified through any of those methods, then it will bind the server with '127.0.0.1' as its ip address, and bind with port 8080.
@@ -24,5 +22,5 @@ If you would like your webpage to be automatically up when the program is execut
 # Configuration File
 * "open_page_on_startup" : Specify true or false if you want the program to automatically open the web page for you when the server starts up. [Optional]
 * "use_client_address" : Specify true or false if you want the program to bind the server's ip with your machine's ip address. [Optional, but may not work properly if your have multiple network adapters like virtual adapters]
-* "server_ip" : Specify a localhost ip or your own ip for the server to bind. [not required if you want it to use your machine's ip address]
+* "server_ip" : Specify a localhost ip or your own ip for the server to bind. [only required if 'use_client_address' is set to false]
 * "server_port" : Specify a port number like 8080 or 8000 for the server to bind. [Required]
