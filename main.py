@@ -26,9 +26,6 @@ import asyncio
 # Used for 
 import socket
 
-#
-from random import randint, choice
-
 # Used for providing user input for specifying 
 import argparse
 
