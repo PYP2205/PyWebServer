@@ -53,10 +53,10 @@ async def start_http_server(HOST="127.0.0.1", PORT=8080, auto_open=False):
             # Serves HTTPS requests until the user presses CTRL + C on the console.
             await httpd.serve_forever()
 
-            
+    # If the user wishes to stop the server by pressing CTRL + C, then it will shutdown the webserver.
     except KeyboardInterrupt:
         print(f"\n{HOST}:{PORT} stopped!\n")
         httpd.shutdown()
-
+    # If any unknown exception occurs, then it will show the user the execption that has been raised.
     except Exception as error:
         print(f"\n{HOST}:{PORT} stopped due to: {error}\n")
