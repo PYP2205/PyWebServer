@@ -1,7 +1,10 @@
 {
-    "auto_open": false,
+    "auto_open": true,
     "use_host_ip": true,
-    "webserver_ip": "127.0.0.10",
+    "webserver_protocol": "HTTPS",
+    "path_to_cert": "https_cert.pem",
+    "path_to_key": "https_key.pem",
+    "address_family": "inet",
+    "webserver_ip": "",
     "webserver_port": 8080
 }
-
