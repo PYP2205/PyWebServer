@@ -68,3 +68,6 @@ If you would like your webpage to be automatically up when the program is execut
 
 # Note
 If you are Linux, and you want the sever to listen on HTTP's or HTTPS's default port (HTTP 80, HTTPS 443) run the program with root/sudo privledges. As with programs such as nginx, httpd, etc. might be using the ports and it wouldn't allow the server to be binded with the ports in use. Otherwise if you're on Windows, you wouldn't need adminstrator privledges to run a webserver with HTTP's or HTTPS's default port. And when the server is running with HTTP or HTTPS, you won't need to specify the port the server is listening on (depending if you use HTTP's or HTTPS's default port).
+
+# (Possibly) Work in Progress
+While this project is overall complete in feature development and stabilty. I personally think that there could potenonally be issues with logging. While I would typically spend a bunch of time stablizing my projects before they are considered complete, and get it uploaded to Github. I may not be so certain that some features are free of bugs. If you encounter any issues with logging or overall any other feature, then please open an 'issue' for me to fix. As I want my projects to be suitable for anyone to use for their own things. While I won't be always avaliable to fix any issues, due to being busy on somehting else.
